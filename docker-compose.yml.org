@@ -1,0 +1,12 @@
+version: '3'
+services:
+  flask-server:
+    build: .
+    ports:
+      - 5000:5000
+    restart: always
+    volumes:
+      - flask-data:/usr/src/app
+
+volumes:
+  flask-data: {}
