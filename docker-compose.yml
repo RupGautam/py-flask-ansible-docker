@@ -3,11 +3,11 @@ version: '3'
 services:
   reverse-proxy:
     image: nginx:1.17.10
-    container_name: reverse_proxy_demo
+    container_name: nginx-webserver
     depends_on:
         - flask-app
     volumes:
-      - ./reverse_proxy/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 80:80
   flask-app:

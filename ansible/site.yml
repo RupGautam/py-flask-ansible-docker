@@ -1,0 +1,11 @@
+---
+- name: Install boostrap, docker and deploy
+  hosts: web-server
+  remote_user: ubuntu
+  become: yes
+  become_method: sudo 
+
+  roles:
+    - boostrap
+    - docker 
+    - deploy 
