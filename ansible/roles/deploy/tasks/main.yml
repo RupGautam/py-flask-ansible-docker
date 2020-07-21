@@ -5,16 +5,7 @@
     clone: yes
     dest: ./flask-app
 
-- name: Activate venv for python
-  pip:
-    requirements: ./flask-app/requirements.txt
-    virtualenv: ./flask-app/env
-    virtualenv_python: python3.7
-
-
 - name: Docker-compose up -d 
-  shell: docker-compose up -d --build --remove-orphans
-  args:
-    chdir: ./flash-app
+  shell: cd ./flask-app && docker-compose up -d --build --remove-orphans
     
     
