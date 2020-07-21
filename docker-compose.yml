@@ -1,21 +1,12 @@
 version: '3'
-
 services:
-  reverse-proxy:
-    image: nginx:1.17.10
-    container_name: nginx-webserver
-    depends_on:
-        - flask-app
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-    ports:
-      - 80:80
-  flask-app:
+  flask-server:
     build: .
     ports:
       - 5000:5000
     restart: always
     volumes:
       - flask-data:/usr/src/app
+
 volumes:
   flask-data: {}
