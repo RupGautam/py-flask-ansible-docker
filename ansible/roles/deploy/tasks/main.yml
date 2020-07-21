@@ -12,7 +12,9 @@
     virtualenv_python: python3.7
 
 
-- name: Create services
-  docker_compose:
-    project_src: ./flask-app
+- name: Docker-compose up -d 
+  shell: docker-compose up -d --build --remove-orphans
+  args:
+    chdir: ./flash-app
+    
     
