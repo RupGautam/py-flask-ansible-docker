@@ -1,0 +1,38 @@
+---
+- name: Fetch the repo from GitHub
+  git:
+    repo: 'https://github.com/RupGautam/py-flask-ansible-docker.git'
+    clone: yes
+    dest: ./flask-app
+
+- name: Build flask-app image
+  docker_image:
+    path: ./flask-app
+    name: flask_app_image
+    tag: v1
+    source: build
+
+- name: Start flask-app container
+  docker_container:
+    name: flask-app
+    images: flask_app_image
+    restart_policy: always
+    state: started
+    ports:
+      - "5000:5000"
+    networks:
+      - name: "{{ docker_network_name }}"
+
+- name: Start nginx container
+  docker_container:
+    name: nginx
+    images: nginx:1.17.10
+    restart_policy: always
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+    networks:
+      - name: "{{ docker_network_name }}"
+
+
