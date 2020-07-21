@@ -15,9 +15,12 @@
     - ca-certificates
     - wget 
     - curl 
+    - python3-dev
     - python3-pip
     - python3-docker
     - python3-setuptools
+    - python3-wheel
+    - python3-venv
     - virtualenv
     
 - name: Add GPG keys

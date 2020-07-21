@@ -1,15 +1,20 @@
-FROM python:3.8.3-slim-buster
-LABEL maintainer="Rup Gautam <hello@rupgautam.me>"
+FROM ubuntu:18.04
 
+LABEL MAINTANER Your Name "youremail@domain.tld"
 
-WORKDIR /usr/src/app
-COPY app app
-COPY requirements.txt requirements.txt
+RUN apt-get update -y && \
+    apt-get install -y python-pip python-dev
+
+# We copy just the requirements.txt first to leverage Docker cache
+COPY ./requirements.txt /app/requirements.txt
+
+WORKDIR /app
+
 RUN pip install -r requirements.txt
 
-EXPOSE 5000
+COPY ./app /app
+COPY ./run.py .
 
-ENV FLASK_APP=run.py
+ENTRYPOINT [ "python" ]
 
-CMD flask run --host=0.0.0.0
-
+CMD [ "flask", "run" ]
