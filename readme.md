@@ -46,6 +46,6 @@ $ vi ansible/hosts
 $ cd ansible
 $ ansible-playbook site.yml
 ```
-Once `ansible playbook is finished; you should be able to acess your application <ip-address>
+Once `ansible-playbook` is finished; you should be able to acess your application <ip-address>
 
 
