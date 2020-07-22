@@ -24,6 +24,7 @@ $ pip install -r app/requirements.txt
 
 #### Running the application locally
 ```
+$ FLASK_APP=app.py
 $ gunicorn -w 2 -b :8000 app:app
 ```
 You should be able to access webpage [localhost:8000](http://localhost:8000)
