@@ -1,0 +1,14 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo exporting FLASK_APP var
+      - export FLASK_APP=app.py
+      - echo Installing pip requiremetns
+      - cd app && pip install -r requirements.txt
+      - echo Run gunicorn 
+      - exec python app.py
+  post_build:
+    commands:
+      - echo Build completed successfully
