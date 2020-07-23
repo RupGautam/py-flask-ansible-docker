@@ -28,5 +28,4 @@ jobs:
     - name: Run the app
       run: |
         # Run the app using gunicorn
-        gunicorn app:app -b 0.0.0.0:8000
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        gunicorn -w 2 -b :8000 app:app
